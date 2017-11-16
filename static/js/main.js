@@ -5,25 +5,36 @@ function siguiente(){
     //cambiar wizard active
     elemento=$('.wizzard').find('li.active');
     texto_elemento = parseInt(elemento.find('.etapa_nombre').text());
-    next=texto_elemento;
-     if (texto_elemento < 6 ){
-         next=texto_elemento+1;
-         elemento.removeClass( "active" ).addClass('done').next().addClass('active');
-     }
 
-     if (next == 6 ){
-         $('#next').addClass('hidden');
-         $('#final').removeClass('hidden');
-     }
-     else if (next > 0 ){
-         $('#previous').removeClass('hidden');
-     }
+    if (validar(texto_elemento)){
+        $('div.form-group').removeClass('has-error');
+         next=texto_elemento;
+         if (texto_elemento < 6 ){
+             next=texto_elemento+1;
+             elemento.removeClass( "active" ).addClass('done').next().addClass('active');
+         }
 
-     //cambiar contenido
-     $('#etapa_'+next).addClass('in active');
-     $('#etapa_'+texto_elemento).removeClass('in active');
+         if (next == 6 ){
+             $('#next').addClass('hidden');
+             $('#final').removeClass('hidden');
+         }
+         else if (next > 0 ){
+             $('#previous').removeClass('hidden');
+         }
+
+         //cambiar contenido
+         $('#etapa_'+next).addClass('in active');
+         $('#etapa_'+texto_elemento).removeClass('in active');
+
+    }
+
+
 
 }
+
+
+
+
 
 
 function anterior(){
@@ -48,7 +59,9 @@ function anterior(){
     //cambiar contenido
     $('#etapa_'+next).addClass('in active');
     $('#etapa_'+texto_elemento).removeClass('in active');
-}
+
+
+   }
 
 
 function mostar_info_movilidad_geografica() {
@@ -163,24 +176,24 @@ function construir_tabla_hijos() {
 
     for(var i=0; i<= cant_hijos;i++){
         $('.tabla_hijos').find('tbody').append($(" <tr>\n" +
-        "                            <td><input class=\"form-control\" type=”number” name=annoNac min=\"1900\" max=\"2017\"></td>\n" +
-        "                            <td><input class=\"form-control\" type=”number” name=annoAdop min=\"1900\" max=\"2017\"></td>\n" +
+        "                            <td><input class=\"form-control input_tabla\" type=”number” name=annoNac min=\"1900\" max=\"2017\"></td>\n" +
+        "                            <td><input class=\"form-control input_tabla\" type=”number” name=annoAdop min=\"1900\" max=\"2017\"></td>\n" +
         "                            <td>\n" +
-        "                                <select class=\"form-control\">\n" +
+        "                                <select class=\"form-control select_tabla\">\n" +
         "                                    <option>---Seleccione---</option>\n" +
         "                                    <option>Entre 33% y 64%</option>\n" +
         "                                    <option>65% o superior</option>\n" +
         "                                </select>\n" +
         "                            </td>\n" +
         "                            <td>\n" +
-        "                                <select class=\"form-control\">\n" +
+        "                                <select class=\"form-control select_tabla\">\n" +
         "                                    <option>---Seleccione---</option>\n" +
         "                                    <option>Si</option>\n" +
         "                                    <option>No</option>\n" +
         "                                </select>\n" +
         "                            </td>\n" +
         "                            <td>\n" +
-        "                                <select class=\"form-control\">\n" +
+        "                                <select class=\"form-control select_tabla\">\n" +
         "                                    <option>---Seleccione---</option>\n" +
         "                                    <option>Si</option>\n" +
         "                                    <option>No</option>\n" +
@@ -257,6 +270,18 @@ $(document).ready(function() {
        $('.alerta_info_adquisicion').removeClass('hidden');
     }, function () {
         $('.alerta_info_adquisicion').addClass('hidden');
+    });
+
+    $('.info_anualidades').hover(function(){
+        mostar_info_anualidades();
+    }, function () {
+       ocultar_info_anualidades();
+    });
+
+    $('.info_pensiones').hover(function(){
+        mostar_info_pensiones();
+    }, function () {
+       ocultar_info_pensiones();
     });
 
 

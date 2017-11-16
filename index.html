@@ -14,6 +14,7 @@
     <script src="static/vendor/jQuery/jQuery.js"></script>
 
     <script src="static/js/main.js"></script>
+    <script src="static/js/validaciones.js"></script>
 
  	<script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -73,29 +74,38 @@
                            <input type="number" class="form-control" id="inputNacimiento" max="2000" min="1900">
                        </div>
                        <div class="form-group col-xs-12">
-                           <label for="inputNacimiento" class="control-label">Situación familiar</label>
-                           <select class="form-control ">
-                               <option>---Seleccione---</option>
-                               <option>Soltero/a, viudo/a, divorciado/a o separado/a legalmente con desendientes dependientes solo de Vd.</option>
-                               <option>Casado/a y no separado/a legalmente cuyo cónyuge no obtiene rentas superiores a 1.500 euros anuales, excluidas las exentas</option>
-                               <option>Situación familiar distinta de las dos anteriores</option>
+                           <label for="situacionFamiliar" class="control-label">Situación familiar</label>
+                           <select class="form-control " id="situacionFamiliar">
+                               <option value="0">---Seleccione---</option>
+                               <option value="1">Soltero/a, viudo/a, divorciado/a o separado/a legalmente con desendientes dependientes solo de Vd.</option>
+                               <option value="2">Casado/a y no separado/a legalmente cuyo cónyuge no obtiene rentas superiores a 1.500 euros anuales, excluidas las exentas</option>
+                               <option value="3">Situación familiar distinta de las dos anteriores</option>
                                <option>No desea manifestar su situación familiar</option>
                            </select>
                        </div>
                        <div class="form-group col-xs-6">
-                           <label for="inputNacimiento" class="control-label">Grado de discapacidad reconocida</label>
+                           <label for="gradoDiscapacidad" class="control-label">Grado de discapacidad reconocida</label>
+
                            <div class="radio">
+                               <label for="mas65">
+                                   <input type="radio" name="gradoDiscapacidad" id="no_tiene"  checked>
+                                   Ninguno
+                               </label>
+                           </div>
+                           <div class="radio" id="gradoDiscapacidad">
                                 <label for="entre33y65">
-                                    <input type="radio" name="gradoDiscapacidad" id="entre33y65" value="option2" checked>
+                                    <input type="radio" name="gradoDiscapacidad" id="entre33y65" >
                                     Igual o superior al 33% e inferior al 65%
                                 </label>
                            </div>
                            <div class="radio">
                                <label for="mas65">
-                                   <input type="radio" name="gradoDiscapacidad" id="mas65" value="option2" checked>
+                                   <input type="radio" name="gradoDiscapacidad" id="mas65"  checked>
                                    Igual o superior al 65%
                                </label>
                            </div>
+
+
                            <div class="checkbox">
                                <label>
                                    <input type="checkbox" value="">
@@ -223,20 +233,20 @@
                             <legend><h4>Pensiones compensatorias en favor del cónyuge y anualidades por alimentos en favor de los hijos, fijadas ambas por decisión judicial</h4></legend>
                             <div class="form-group col-xs-6">
                                 <label for="inputImporte" class="control-label">Pensión compensatoria en favor del cónyuge</label>
-                                <a class="info_pensiones" onclick="mostar_info_pensiones()"><span class="glyphicon glyphicon-info-sign"></span></a>
+                                <a class="info_pensiones sms_info">i</a>
+
                                 <input type="number" class="form-control" id="inputImporte" min="0">
                                 <div class="alert alert-info alert-dismissible hidden alerta_info_pensiones" role="alert">
-                                      <button type="button" class="close"  onclick="ocultar_info_pensiones()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                       <strong>Información</strong>  Importe anual que está Vd. obligado a satisfacer por resolución judicial.
                                 </div>
+
                            </div>
                            <div class="form-group col-xs-6">
                                <label for="inputAnualidades" class="control-label">Anualidades por alimentos en favor de los hijos</label>
-                               <a class="info_anualidades" onclick="mostar_info_anualidades()"><span class="glyphicon glyphicon-info-sign"></span></a>
+                               <a class="info_anualidades sms_info" >i</a>
                                <input type="number" class="form-control" id="inputAnualidades" min="0">
                                <div class="alert alert-info alert-dismissible hidden alerta_info_anualidades" role="alert">
-                                  <button type="button" onclick="ocultar_info_anualidades()" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                  <strong>Información</strong> Importe anual que está Vd. obligado a satisfacer por resolución judicial.
+                                     <strong>Información</strong> Importe anual que está Vd. obligado a satisfacer por resolución judicial.
                                </div>
                            </div>
                         </div>
@@ -267,8 +277,8 @@
                                 <input type="date" class="form-control" id="inputFecha" value="">
                             </div>
                             <div class="form-group col-xs-12" style="display: block">
-                                <button class="btn btn-danger" id="btn_firma" onclick="mostar_info_firma()">Firmar digitalmente</button>
-                                <button class="btn btn-danger hidden" id="btn_cfirma" onclick="ocultar_info_firma()">Cancelar firma</button>
+                                <button class="btn btn-success" id="btn_firma" onclick="mostar_info_firma()">Firmar digitalmente</button>
+                                <button class="btn btn-success hidden" id="btn_cfirma" onclick="ocultar_info_firma()">Cancelar firma</button>
 
 
 
