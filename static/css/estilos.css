@@ -305,6 +305,14 @@ a:link,a:active{
     border-radius: 0 !important;
     background-color: #34495E !important;
     color: white !important;
+    text-align: justify;
+}
 
+.alerta_info_firma{
+    position: relative;
+    color: #bebebe;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: inline-block;
 
 }
