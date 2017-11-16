@@ -1,0 +1,303 @@
+<!DOCTYPE html5>
+ 
+<html lang="es">
+ 
+<head>
+	<title>Impuesto sobre la Renta de las Personas Físicas</title>
+ 	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="static/css/estilos.css" >
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+	<link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+     <script src="static/js/main.js"></script>
+
+ 	<script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+
+<body >
+
+        <header>
+            <div class="header_title" >
+                   <h1 class="pull-left">Impuesto sobre la Renta de las Personas Físicas</h1>
+                   <h3 class="pull-right modelo_145">Modelo 145</h3>
+                       <h4 class=" hidden-xs" style="clear: both">Retenciones sobre rendimientos del trabajo</h4>
+                       <h4 class=" hidden-xs">Comunicación de datos al pagador (artículo 88 del Reglamento del IRPF)</h4>
+
+
+            </div>
+
+
+            <div class="wizzard hidden-xs">
+                <ul>
+                    <li class="active col-xs-2"><a><span class="etapa_nombre">1</span><span class="etapa_descripcion">Paso 1<br><small>Datos Perceptor</small> </span></a></li>
+                    <li class="col-xs-2"><a><span class="etapa_nombre">2</span><span class="etapa_descripcion">Paso 2<br><small>Datos Descendientes</small> </span></a></li>
+                    <li class="col-xs-2"><a><span class="etapa_nombre">3</span><span class="etapa_descripcion">Paso 3<br><small>Datos Ascendientes</small> </span></a></li>
+                    <li class="col-xs-2"><a><span class="etapa_nombre">4</span><span class="etapa_descripcion">Paso 4<br><small>Pensiones Compensatorias</small> </span></a></li>
+                    <li class="col-xs-2"><a><span class="etapa_nombre">5</span><span class="etapa_descripcion">Paso 5<br><small>Pagos</small> </span></a></li>
+                    <li class="col-xs-2"><a><span class="etapa_nombre">6</span><span class="etapa_descripcion">Paso 6<br><small>Firma y Fecha</small> </span></a></li>
+
+                </ul>
+            </div>
+        </header>
+
+
+    <section>
+
+        <article>
+
+            <div class="tab-content">
+
+
+                    <div id="etapa_1" class="tab-pane fade in active">
+                    <div class="form-group">
+                       <legend><h4>Datos del perceptor que efectúa la comunicación</h4></legend>
+                       <div class="form-group col-xs-6">
+                           <label for="inputApellidos"  class="control-label">Apellidos</label>
+                           <input type="text" class="form-control" id="inputApellidos">
+                       </div>
+                       <div class="form-group col-xs-6">
+                           <label for="inputNombre"  class="control-label">Nombre</label>
+                           <input type="text" class="form-control" id="inputNombre">
+                       </div>
+                       <div class="form-group col-xs-6">
+                           <label for="inputNIF" class="control-label">NIF</label>
+                           <input type="text" class="form-control" id="inputNIF">
+                       </div>
+                       <div class="form-group col-xs-6">
+                           <label for="inputNacimiento"  class="control-label">Año de nacimiento</label>
+                           <input type="number" class="form-control" id="inputNacimiento" max="2000" min="1900">
+                       </div>
+                       <div class="form-group col-xs-12">
+                           <label for="inputNacimiento" class="control-label">Situación familiar</label>
+                           <select class="form-control ">
+                               <option>---Seleccione---</option>
+                               <option>Soltero/a, viudo/a, divorciado/a o separado/a legalmente con desendientes dependientes solo de Vd.</option>
+                               <option>Casado/a y no separado/a legalmente cuyo cónyuge no obtiene rentas superiores a 1.500 euros anuales, excluidas las exentas</option>
+                               <option>Situación familiar distinta de las dos anteriores</option>
+                               <option>No desea manifestar su situación familiar</option>
+                           </select>
+                       </div>
+                       <div class="form-group col-xs-6">
+                           <label for="inputNacimiento" class="control-label">Grado de discapacidad reconocida</label>
+                           <div class="radio">
+                                <label for="entre33y65">
+                                    <input type="radio" name="gradoDiscapacidad" id="entre33y65" value="option2" checked>
+                                    Igual o superior al 33% e inferior al 65%
+                                </label>
+                           </div>
+                           <div class="radio">
+                               <label for="mas65">
+                                   <input type="radio" name="gradoDiscapacidad" id="mas65" value="option2" checked>
+                                   Igual o superior al 65%
+                               </label>
+                           </div>
+                           <div class="checkbox">
+                               <label>
+                                   <input type="checkbox" value="">
+                                   Además, tengo acreditada la necesidad de ayuda de terceras personas o movilidad reducida
+                               </label>
+                           </div>
+                       </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label for="movilidadGeografica" class="control-label">Movilidad Geografica</label>
+                        <div class="alert alert-info alert-dismissible alerta alerta_info_movilidad_geografica hidden" role="alert">
+                            <strong>Información</strong> Si anteriormente estaba Vd. en situación de desempleo e inscrito en la oficina de empleo y la aceptación del puesto de trabajo actual ha exigido
+                            el traslado de su residencia habitual a un nuevo municipio, indique la fecha de dicho traslado
+                        </div>
+                        <a class="info_movilidad_geografica sms_info">i</a>
+                        <input type="date" class="form-control" id="movilidadGeografica">
+
+                    </div>
+                    <div class="checkbox col-xs-12">
+
+                        <label>
+                            <input type="checkbox" value="">
+                            <b>Obtención de rendimientos con período de generación superior a 2 años durante los 5 períodos impositivos anteriores</b>
+                        </label>
+                        <a class="info_rendimiento sms_info" >i</a>
+                        <div class="alert alert-info alert-dismissible hidden alerta alerta_info_rendimientos" role="alert">
+                            <strong>Información</strong> Marque esta casilla si, en el plazo comprendido en los 5 períodos impositivos anteriores al ejercicio al que corresponde la presente comunicación,
+                            ha percibido rendimientos del trabajo con período de generación superior a 2 años, a los que, a efectos del cálculo del tipo de retención le haya sido aplicada la reducción por
+                            irregularidad contempladaen el artículo 18.2 de la Ley del Impuesto y, sin embargo,	posteriormente usted no haya aplicado la citada reducción en su correspondiente autoliquidación del
+                            Impuesto sobre la Renta
+                        </div>
+                    </div>
+				</div>
+
+                    <div id="etapa_2" class="tab-pane fade">
+                        <div class="form-group">
+                        <legend><h4>Datos de los hijos o descendientes menores de 25 años, o mayores de dicha edad si son discapacitados, que conviven con el perceptor y que no tienen rentas anuales superiores a 8.000 euros </h4></legend>
+                        <div >
+                            <div class="form-group col-xs-6">
+                                <label style="display: block">Tiene Hijos o descendientes</label>
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <button id="btn_tiene_hijos_si" type="button" class="btn btn-default" onclick="acitvar_btn_tiene_hijos('si')">Si</button>
+                                    <button id="btn_tiene_hijos_no" type="button" class="btn btn-primary" onclick="acitvar_btn_tiene_hijos('no')">No</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-xs-6 hidden cantidad_hijos">
+                                <label for="input_cantidad_hijos" class="control-label">Cantidad de hijos y/o descendientes</label>
+                                <div class="input-group">
+                                      <input min="1" type="number" class="form-control" id="input_cantidad_hijos">
+                                      <span class="input-group-btn">
+                                        <button class="btn btn-default btn_cant_hijos" onclick="construir_tabla_hijos()" type="button"><span class="glyphicon glyphicon-check"></span></button>
+                                      </span>
+                                </div><!-- /input-group -->
+                            </div>
+                        </div>
+
+                        <table class="text-center tabla_hijos hidden">
+
+                            <thead>
+                               <tr>
+                                <th class="col-xs-1">Año de nacimiento</th>
+                                <th class="col-xs-2">Año de adopción o acogimiento</th>
+                                <th class="col-xs-3">Grado de minusvalía</th>
+                                <th class="col-xs-4">Tiene acreditada la necesidad de ayuda de terceras personas o movilidad reducida</th>
+                                <th class="col-xs-4">Cómputo por entero de hijos o descendientes</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            </tbody>
+
+                        </table>
+                   </div>
+                    </div>
+
+                    <div id="etapa_3" class="tab-pane fade">
+                <div class="form-group">
+                       <legend><h4>Datos de los ascendientes mayores de 65 años, o menores de dicha edad si son discapacitados, que conviven con el perceptor durante, al menos, la mitad del año y que no tienen rentas anuales superiores a 8.000 euros </h4></legend>
+                       <div >
+                           <div class="form-group col-xs-6">
+                               <label style="display: block">Tiene ascendientes</label>
+                               <div class="btn-group" role="group" aria-label="...">
+                                   <button type="button" id="btn_tiene_ascendientes_si" onclick="acitvar_btn_tiene_ascendientes('si')" class="btn btn-default">Si</button>
+                                   <button type="button" id="btn_tiene_ascendientes_no" onclick="acitvar_btn_tiene_ascendientes('no')" class="btn btn-primary">No</button>
+                               </div>
+                           </div>
+                          <div class="form-group col-xs-6 hidden  cantidad_ascendientes">
+                                <label for="input_cantidad_ascendientes" class="control-label">Cantidad ascendientes</label>
+                                <div class="input-group">
+                                      <input min="1" type="number" class="form-control" id="input_cantidad_ascendientes">
+                                      <span class="input-group-btn">
+                                        <button class="btn btn-default btn_cant_hijos" onclick="construir_tabla_ascendientes()" type="button"><span class="glyphicon glyphicon-check"></span></button>
+                                      </span>
+                                </div><!-- /input-group -->
+                          </div>
+
+
+                       </div>
+
+                       <table class="text-center tabla_ascencientes hidden">
+                           <thead>
+                           <tr>
+                               <th class="col-xs-1">Año de nacimiento</th>
+                               <th class="col-xs-2">Grado de minusvalía</th>
+                               <th class="col-xs-4">Tiene acreditada la necesidad de ayuda de terceras personas o movilidad reducida</th>
+                               <th class="col-xs-4">Convivencia con otros descendientes  <a class="info_convivencia sms_info sms_info2">i</a></th>
+                           </tr>
+                           <div class=" alert-info  hidden alerta alerta_info_convivencia col-xs-4 col-xs-offset-8">
+                                   <strong>Información</strong> Si alguno de los ascendientes convive también, al menos durante la mitad del año, con otros descendientes del mismo
+                                   grado que Vd., indique en esta casilla el número total de descendientes con los que convive, incluido Vd. (Si los ascendientes sólo conviven con Vd., no rellene esta casilla).
+                           </div>
+                           </thead>
+                           <tbody>
+
+                           </tbody>
+
+                       </table>
+                   </div>
+              </div>
+
+                    <div id="etapa_4" class="tab-pane fade">
+                        <div class="form-group">
+                            <legend><h4>Pensiones compensatorias en favor del cónyuge y anualidades por alimentos en favor de los hijos, fijadas ambas por decisión judicial</h4></legend>
+                            <div class="form-group col-xs-6">
+                                <label for="inputImporte" class="control-label">Pensión compensatoria en favor del cónyuge</label>
+                                <a class="info_pensiones" onclick="mostar_info_pensiones()"><span class="glyphicon glyphicon-info-sign"></span></a>
+                                <input type="number" class="form-control" id="inputImporte" min="0">
+                                <div class="alert alert-info alert-dismissible hidden alerta_info_pensiones" role="alert">
+                                      <button type="button" class="close"  onclick="ocultar_info_pensiones()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                      <strong>Información</strong>  Importe anual que está Vd. obligado a satisfacer por resolución judicial.
+                                </div>
+                           </div>
+                           <div class="form-group col-xs-6">
+                               <label for="inputAnualidades" class="control-label">Anualidades por alimentos en favor de los hijos</label>
+                               <a class="info_anualidades" onclick="mostar_info_anualidades()"><span class="glyphicon glyphicon-info-sign"></span></a>
+                               <input type="number" class="form-control" id="inputAnualidades" min="0">
+                               <div class="alert alert-info alert-dismissible hidden alerta_info_anualidades" role="alert">
+                                  <button type="button" onclick="ocultar_info_anualidades()" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                  <strong>Información</strong> Importe anual que está Vd. obligado a satisfacer por resolución judicial.
+                               </div>
+                           </div>
+                        </div>
+                    </div>
+
+                    <div id="etapa_5" class="tab-pane fade">
+                        <div class="form-group">
+                             <legend><h4>Pagos por la adquisición o rehabilitación de la vivienda habitual utilizando financiación ajena, con derecho a deducción en el IRPF</h4></legend>
+                             <div class="checkbox col-xs-12">
+                                 <label style="display: inline-block">
+                                    <input type="checkbox" value="">
+                                    <b>Vd. está efectuando pagos por préstamos destinados a la adquisición o rehabilitación de su vivienda habitual por los que vaya a tener derecho a deducción por inversión en vivienda habitual en el IRPF y la cuantía total de sus retribuciones íntegras en concepto de rendimientos del trabajo procedentes de todos sus pagadores es inferior a 33.007,20 euros anuales</b>
+                                    <a style="display: inline-block" class="info_adquisicion sms_info">i</a>
+                                 </label>
+
+                                 <div class="alert alert-info alerta alert-dismissible hidden alerta_info_adquisicion" role="alert">
+                                    <strong>Información</strong> Solo podrán cumplimentar este apartado los contribuyentes que hayan adquirido su vivienda habitual, o hayan satisfecho cantidades por obras de rehabilitación de la misma, antes del 1 de enero de 2013.
+                                 </div>
+                             </div>
+                        </div>
+                    </div>
+
+                    <div id="etapa_6" class="tab-pane fade">
+                        <div class="form-group">
+                            <legend><h4>Fecha y Firma</h4></legend>
+                            <div class="form-group col-xs-6">
+                                <label for="inputImporte" class="control-label">Fecha</label>
+                                <input type="date" class="form-control" id="inputFecha" value="">
+                            </div>
+                            <div class="form-group col-xs-12" style="display: block">
+                                <button class="btn btn-danger" id="btn_firma" onclick="mostar_info_firma()">Firmar digitalmente</button>
+                                <button class="btn btn-danger hidden" id="btn_cfirma" onclick="ocultar_info_firma()">Cancelar firma</button>
+
+
+                                <div class="alert alert-info alert-dismissible hidden alerta_info_firma" role="alert">
+                                        <strong>Información</strong> Se ha realizado la firma
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
+        </article>
+
+    </section>
+
+    <footer>
+        <div class="botones_acciones pull-right">
+                 <a id="previous" onclick="anterior()" class="btn btn-primary hidden">Anterior</a>
+                 <a id="next" onclick="siguiente()" class="btn btn-success">Siguiente</a>
+                 <a id="final" class="btn btn-default hidden">Finalizar</a>
+            </div>
+    </footer>
+
+</body>
+

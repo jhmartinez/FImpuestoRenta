@@ -1,0 +1,310 @@
+
+body{
+    background-color: #f0f0f0 !important;
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.471;
+    color: #73879C !important;
+}
+
+
+h1, h2, h3, h4,hr{
+    color: #73879C !important;
+}
+
+
+.botones_acciones{
+    margin: 30px;
+    clear: both;
+
+}
+
+.btn_cant_hijos{
+    height: 34px;
+}
+
+.btn-success {
+    background: #26B99A !important;
+    border: 1px solid #169F85 !important;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #337ab7 !important;
+    border-color: #2e6da4 !important;
+}
+
+section {
+    background-color:white;
+    padding: 20px;
+    overflow: hidden;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+
+
+header {
+    position: fixed !important;
+    z-index: 2;
+    border: 1px solid #f0f0f0 !important;
+    background-color: #f9f9f9;
+    left: 10%;
+    right: 10%;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 34%;
+    overflow: auto ;
+}
+
+
+header .header_title{
+    margin-left: 20px;
+}
+
+header .header_title .modelo_145{
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+
+article{
+    margin-top: 250px;
+
+}
+
+
+.tab-content{
+    position: fixed;
+    overflow-y: auto;
+    bottom: 100px;
+    left: 10%;
+    right: 10%;
+    top: 34%;
+    background-color: white;
+    padding: 20px;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    height: 100px;
+    left: 10%;
+    right: 10%;
+    background-color: white;
+
+}
+
+
+
+
+
+.tabla_hijos thead, .tabla_ascencientes thead{
+    background-color: #34495E;
+    border: 1px solid #ECF0F1;
+    color: #ECF0F1;
+}
+
+.tabla_hijos thead th, .tabla_ascencientes thead th{
+    font-size: 15px !important;
+}
+
+
+.tabla_hijos, .tabla_ascencientes{
+    margin-top: 50px !important;
+    clear: both;
+    display: block;
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.tabla_hijos .form-control, .tabla_ascencientes .form-control{
+    border-radius:0 !important; ;
+}
+
+
+.alerta_info_adquisicion{
+    position: absolute;
+    z-index: 6;
+}
+
+
+.alerta_info_firma{
+    margin-top: 10px;
+}
+
+.alerta_info_rendimientos{
+    top: -130px !important;
+    position: absolute; !important;
+    width: 80%;
+}
+
+.alerta_info_convivencia{
+    position: absolute !important;
+    z-index: 4;
+    left: -28px;
+    top: 45px;
+    padding: 3px;
+}
+
+
+
+a:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:link,a:active{
+    text-decoration: none !important;
+}
+
+#exampleModal{
+    z-index: 10 !important;
+    position: relative !important;
+    top: 100px !important;
+}
+
+
+.wizzard{
+    width: 100%;
+    margin-left: -2%;
+
+}
+
+
+
+.wizzard ul{
+    position: relative;
+    display: table;
+    list-style: none;
+    width: 100%;
+    margin: 0 0 20px;
+
+}
+
+.wizzard ul li{
+    display: table-cell;
+    text-align: center;
+    padding: 0!important;
+
+}
+
+
+.wizzard ul li a:hover{
+    text-decoration: none;
+    cursor: default;
+}
+
+
+.wizzard ul li a {
+    display: block;
+    position: relative;
+}
+
+.wizzard ul li a .etapa_nombre{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 100px;
+    display: block;
+    margin: 0 auto 5px;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    background: #ccc;
+    color: #fff;
+}
+
+
+
+
+.wizzard ul li a .etapa_descripcion{
+    color: #73879C;
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.471;
+
+}
+
+.wizzard ul li a::before{
+    content: "";
+    position: absolute;
+    height: 4px;
+    background: #ccc;
+    top: 20px;
+    width: 100%;
+    z-index: 4;
+    margin: auto;
+    left: 0;
+
+}
+
+
+.wizzard ul li:first-child a::before {
+    left: 50%;
+}
+
+.wizzard ul li:last-child a::before {
+    right:50%;
+    width:50%;
+    left:auto;
+}
+
+
+
+.wizzard ul li.done a .etapa_nombre,.wizzard ul li.done a:before {
+    background:#1ABB9C;
+    color:#fff
+   }
+
+.wizzard ul li.active a .etapa_nombre,.wizzard ul li.active a:before {
+    background:#34495E;
+    color:#fff
+   }
+
+
+.wizzard ul li a.no_visited .etapa_nombre,.wizzard ul li a.no_visited:before {
+    background:#ccc;
+    color:#fff
+   }
+
+
+.sms_info{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 100px ;
+    margin-left: 5px;
+    background: transparent !important;
+    text-align: center;
+    border: 2px solid #34495E;
+    color: #34495E !important;
+    line-height: 1.20;
+}
+
+.sms_info2{
+    border: 2px solid white;
+    color: white!important;
+}
+
+.sms_info:hover{
+    background: transparent !important;
+    text-align: center;
+    border: 2px solid #18a98c;
+    color: #19ba9a !important;
+}
+
+
+
+.alert-info{
+    border: none!important;
+    position: absolute;!important;
+    border-radius: 0 !important;
+    background-color: #34495E !important;
+    color: white !important;
+
+
+}
