@@ -273,8 +273,8 @@
                         <div class="form-group">
                             <legend><h4>Fecha y Firma</h4></legend>
                             <div class="form-group col-xs-6">
-                                <label for="inputImporte" class="control-label">Fecha</label>
-                                <input type="date" class="form-control" id="inputFecha" value="">
+                                <label for="inputFecha_firma" class="control-label">Fecha</label>
+                                <input type="date" class="form-control" id="inputFecha_firma" value="">
                             </div>
                             <div class="form-group col-xs-12" style="display: block">
                                 <button class="btn btn-success" id="btn_firma" onclick="mostar_info_firma()">Firmar digitalmente</button>
@@ -304,9 +304,24 @@
         <div class="botones_acciones pull-right">
                  <a id="previous" onclick="anterior()" class="btn btn-primary hidden">Anterior</a>
                  <a id="next" onclick="siguiente()" class="btn btn-success">Siguiente</a>
-                 <a id="final" class="btn btn-default hidden">Finalizar</a>
+                 <a id="final" onclick="finalizar()" class="btn btn-default hidden">Finalizar</a>
             </div>
     </footer>
+
+
+   <div class="modal fade" id="myModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <h3 style="text-align: center">Se ha realizado el regitro de los datos satisfactoriamente</h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+   </div>
 
 </body>
 

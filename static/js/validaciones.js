@@ -1,6 +1,6 @@
 $(document).ready(function() {});
 
-function validar(paso) {
+validar = function (paso) {
     control=false;
     switch(paso){
 
@@ -35,64 +35,24 @@ function validar(paso) {
     }
 
     return control;
-}
-
-
+};
 
 validar_paso1 = function () {
-  control=true;
-
-  if($('#inputApellidos').val() == "" ){
-      $('#inputApellidos').parent().addClass('has-error');
-      control=false;
-  }
-  if($('#inputNombre').val() == "" ){
-      $('#inputNombre').parent().addClass('has-error');
-      control=false;
-  }
-  if($('#inputNIF').val() == "" ){
-      $('#inputNIF').parent().addClass('has-error');
-      control=false;
-  }
-
-  if($('#inputNIF').val() == "" ){
-      $('#inputNIF').parent().addClass('has-error');
-      control=false;
-  }
-
-  if($('#movilidadGeografica').val() == "" ){
-      $('#movilidadGeografica').parent().addClass('has-error');
-      control=false;
-  }
-
-  if($('#situacionFamiliar option:selected').val() == 0){
-      $('#situacionFamiliar').parent().addClass('has-error');
-      control=false;
-  }
-  return control;
+  fields=[ $('#inputApellidos'), $('#inputNombre'), $('#inputNIF'), $('#inputNacimiento'), $('#movilidadGeografica'), $('#situacionFamiliar option:selected') ];
+  return validar_fields(fields);
 };
-
-
-
-
-
-
-
 
 validar_paso2 = function () {
-    control=true;
-
+     fields=[];
      $('.input_tabla').each(function () {
-         if($(this).val() == ""){
-              //input.parent().addClass('has-error');
-              control=false;
-          }
+         fields.push($(this));
      });
 
-
-    return control;
+     $('.select_tabla').each(function () {
+         fields.push($(this).find('option:selected'));
+     });
+     return validar_fields(fields);
 };
-
 
 validar_paso3 = function () {
     control=true;
@@ -100,9 +60,8 @@ validar_paso3 = function () {
 };
 
 validar_paso4 = function () {
-    control=true;
-    return control;
-
+    fields=[ $('#inputImporte'), $('#inputAnualidades') ];
+    return validar_fields(fields);
 };
 
 validar_paso5 = function () {
@@ -111,14 +70,32 @@ validar_paso5 = function () {
 
 };
 
-
-
 validar_paso6 = function () {
-    control=true;
-    return control;
+    fields=[ $('#inputFecha_firma') ];
+    control= validar_fields(fields) && $('#btn_firma').hasClass('hidden');
+    if($('#btn_firma').hasClass('hidden')== false){
+        $('#btn_firma').removeClass('btn-success').addClass('btn-danger');
+    }
+    else {
+        $('#btn_firma').removeClass('btn-danger').addClass('btn-success');
+    }
 
+    return control;
 };
 
+validar_fields = function (fields) {
+    control=true;
+    fields.forEach(function (field) {
+        if(field.val() == "" ){
+            field.parent().addClass('has-error');
+            control=false;
+        }
 
-
+        if(field.val() == 0){
+            field.parent().addClass('has-error').parent().addClass('has-error');
+            control=false;
+        }
+    });
+    return control;
+};
 

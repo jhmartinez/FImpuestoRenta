@@ -125,6 +125,10 @@ footer{
 }
 
 
+table .form-group{
+    margin-bottom: 0px !important;
+}
+
 .alerta_info_adquisicion{
     position: absolute;
     z-index: 6;

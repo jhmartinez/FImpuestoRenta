@@ -2,18 +2,20 @@
 
 
 function siguiente(){
-    //cambiar wizard active
     elemento=$('.wizzard').find('li.active');
     texto_elemento = parseInt(elemento.find('.etapa_nombre').text());
 
     if (validar(texto_elemento)){
-        $('div.form-group').removeClass('has-error');
+        $('div.form-group').removeClass('has-error').parent().removeClass('has-error');
          next=texto_elemento;
          if (texto_elemento < 6 ){
              next=texto_elemento+1;
              elemento.removeClass( "active" ).addClass('done').next().addClass('active');
-         }
+             //cambiar contenido
+             $('#etapa_'+next).addClass('in active');
+             $('#etapa_'+texto_elemento).removeClass('in active');
 
+         }
          if (next == 6 ){
              $('#next').addClass('hidden');
              $('#final').removeClass('hidden');
@@ -21,15 +23,16 @@ function siguiente(){
          else if (next > 0 ){
              $('#previous').removeClass('hidden');
          }
-
-         //cambiar contenido
-         $('#etapa_'+next).addClass('in active');
-         $('#etapa_'+texto_elemento).removeClass('in active');
-
     }
+}
 
 
-
+function  finalizar() {
+    if (validar(6)){
+           $('div.form-group').removeClass('has-error');
+           $('#btn_firma').removeClass('btn-danger').addClass('btn-success');
+           $('#myModal').modal('show');
+    };
 }
 
 
@@ -51,7 +54,7 @@ function anterior(){
           $('#next').removeClass('hidden');
     }
 
-        if (next == 1) {
+    if (next == 1) {
          $('#previous').addClass('hidden');
          $('#next').removeClass('hidden');
     }
@@ -64,25 +67,7 @@ function anterior(){
    }
 
 
-function mostar_info_movilidad_geografica() {
 
-    $('.alerta_info_movilidad_geografica').removeClass('hidden');
-
-}
-
-
-function ocultar_info_movilidad_geografica() {
-     $('.alerta_info_movilidad_geografica').addClass('hidden');
-}
-
-function mostar_info_convivencia() {
-    $('.alerta_info_convivencia').removeClass('hidden');
-}
-
-
-function ocultar_info_convivencia() {
-     $('.alerta_info_convivencia').addClass('hidden');
-}
 
 
 function mostar_info_firma( ){
@@ -101,35 +86,8 @@ function ocultar_info_firma( ){
 
 
 
-function ocultar_info_rendimientos() {
-     $('.alerta_info_rendimientos').addClass('hidden');
-}
 
 
-function mostar_info_rendimientos() {
-     $('.alerta_info_rendimientos').removeClass('hidden');
-}
-
-
-
-function ocultar_info_pensiones() {
-     $('.alerta_info_pensiones').addClass('hidden');
-}
-
-
-function mostar_info_pensiones() {
-     $('.alerta_info_pensiones').removeClass('hidden');
-}
-
-
-function ocultar_info_anualidades() {
-     $('.alerta_info_anualidades').addClass('hidden');
-}
-
-
-function mostar_info_anualidades() {
-     $('.alerta_info_anualidades').removeClass('hidden');
-}
 
 
 function acitvar_btn_tiene_hijos(tipo) {
@@ -174,30 +132,30 @@ function construir_tabla_hijos() {
          $('.tabla_hijos').removeClass('hidden');
 
 
-    for(var i=0; i<= cant_hijos;i++){
+    for(var i=0; i<= cant_hijos-1;i++){
         $('.tabla_hijos').find('tbody').append($(" <tr>\n" +
-        "                            <td><input class=\"form-control input_tabla\" type=”number” name=annoNac min=\"1900\" max=\"2017\"></td>\n" +
-        "                            <td><input class=\"form-control input_tabla\" type=”number” name=annoAdop min=\"1900\" max=\"2017\"></td>\n" +
+        "                            <td><div class=\"form-group\"><input class=\"form-control input_tabla\" type=”number” name=annoNac min=\"1900\" max=\"2017\"></div></td>\n" +
+        "                            <td><div class=\"form-group\"><input class=\"form-control input_tabla\" type=”number” name=annoAdop min=\"1900\" max=\"2017\"></div></td>\n" +
         "                            <td>\n" +
-        "                                <select class=\"form-control select_tabla\">\n" +
-        "                                    <option>---Seleccione---</option>\n" +
-        "                                    <option>Entre 33% y 64%</option>\n" +
-        "                                    <option>65% o superior</option>\n" +
-        "                                </select>\n" +
+        "                                <div class=\"form-group\"><select id=\"grado_minusvalia\" class=\"form-control select_tabla\">\n" +
+        "                                    <option value=\"0\">---Seleccione---</option>\n" +
+        "                                    <option value=\"1\">Entre 33% y 64%</option>\n" +
+        "                                    <option value=\"2\">65% o superior</option>\n" +
+        "                                </select>\n </div>" +
         "                            </td>\n" +
         "                            <td>\n" +
-        "                                <select class=\"form-control select_tabla\">\n" +
-        "                                    <option>---Seleccione---</option>\n" +
-        "                                    <option>Si</option>\n" +
-        "                                    <option>No</option>\n" +
-        "                                </select>\n" +
+        "                                <div class=\"form-group\"><select id=\"ayuda_personas\" class=\"form-control select_tabla\">\n" +
+        "                                    <option value=\"0\">---Seleccione---</option>\n" +
+        "                                    <option value=\"1\">Si</option>\n" +
+        "                                    <option value=\"2\">No</option>\n" +
+        "                                </select>\n</div>" +
         "                            </td>\n" +
         "                            <td>\n" +
-        "                                <select class=\"form-control select_tabla\">\n" +
-        "                                    <option>---Seleccione---</option>\n" +
-        "                                    <option>Si</option>\n" +
-        "                                    <option>No</option>\n" +
-        "                                </select>\n" +
+        "                                <div class=\"form-group\"><select id=\"convivencia_descendientes\" class=\"form-control select_tabla\">\n" +
+        "                                    <option value=\"0\">---Seleccione---</option>\n" +
+        "                                    <option value=\"1\">Si</option>\n" +
+        "                                    <option value=\"2\">No</option>\n" +
+        "                                </select>\n</div>" +
         "                            </td>\n" +
         "                         </tr>"));
     }
@@ -219,7 +177,7 @@ function construir_tabla_ascendientes() {
 
 
 
-    for(var i=0; i<= cant_ascendientes;i++){
+    for(var i=0; i<= cant_ascendientes-1;i++){
         $('.tabla_ascencientes').find('tbody').append("<tr>\n" +
              "                           <td><input class=\"form-control\" type=”number” name=annoNac min=\"1900\" max=\"2017\"></td>\n" +
              "                           <td>\n" +
@@ -244,49 +202,68 @@ function construir_tabla_ascendientes() {
 
     }
 
+
+
+
 }
 $(document).ready(function() {
 
-    $('.info_movilidad_geografica').hover(function(){
-       mostar_info_movilidad_geografica()
 
-    }, function () {
-        ocultar_info_movilidad_geografica();
-    });
+    //Activar mensajes cuando se desencadena el evento hover en los botones de ayuda
 
-    $('.info_rendimiento').hover(function(){
-       mostar_info_rendimientos()
-    }, function () {
-        ocultar_info_rendimientos();
-    });
+    $('.info_movilidad_geografica').hover(
+            function(){
+                 $('.alerta_info_movilidad_geografica').removeClass('hidden');
+            },
+            function () {
+                $('.alerta_info_movilidad_geografica').addClass('hidden');
+            }
+        );
 
-    $('.info_convivencia').hover(function(){
-       mostar_info_convivencia();
-    }, function () {
-        ocultar_info_convivencia();
-    });
+    $('.info_rendimiento').hover(
+        function(){
+            $('.alerta_info_rendimientos').removeClass('hidden');
+        },
+        function () {
+            $('.alerta_info_rendimientos').addClass('hidden');
+        }
+    );
 
-    $('.info_adquisicion').hover(function(){
-       $('.alerta_info_adquisicion').removeClass('hidden');
-    }, function () {
-        $('.alerta_info_adquisicion').addClass('hidden');
-    });
+    $('.info_convivencia').hover(
+        function(){
+            $('.alerta_info_convivencia').removeClass('hidden');
+        },
+        function () {
+            $('.alerta_info_convivencia').addClass('hidden');
+        }
+    );
 
-    $('.info_anualidades').hover(function(){
-        mostar_info_anualidades();
-    }, function () {
-       ocultar_info_anualidades();
-    });
+    $('.info_adquisicion').hover(
+        function(){
+            $('.alerta_info_adquisicion').removeClass('hidden');
+        },
+        function () {
+            $('.alerta_info_adquisicion').addClass('hidden');
+        }
+    );
 
-    $('.info_pensiones').hover(function(){
-        mostar_info_pensiones();
-    }, function () {
-       ocultar_info_pensiones();
-    });
+    $('.info_anualidades').hover(
+        function(){
+            $('.alerta_info_anualidades').removeClass('hidden');
+        },
+        function (){
+            $('.alerta_info_anualidades').addClass('hidden');
+        }
+    );
 
-
-
-
+    $('.info_pensiones').hover(
+        function(){
+            $('.alerta_info_pensiones').removeClass('hidden');
+        },
+        function (){
+            $('.alerta_info_pensiones').addClass('hidden');
+        }
+    );
 
 
 });
