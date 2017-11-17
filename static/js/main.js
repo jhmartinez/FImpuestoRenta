@@ -29,10 +29,12 @@ function siguiente(){
 
 function  finalizar() {
     if (validar(6)){
+           elemento=$('.wizzard').find('li.active');
+           elemento.addClass('done');
            $('div.form-group').removeClass('has-error');
            $('#btn_firma').removeClass('btn-danger').addClass('btn-success');
            $('#myModal').modal('show');
-    };
+    }
 }
 
 
@@ -101,7 +103,8 @@ function acitvar_btn_tiene_hijos(tipo) {
        $('#btn_tiene_hijos_si').removeClass('btn-primary').addClass('btn-default');
        $('#btn_tiene_hijos_no').removeClass('btn-primary').addClass('btn-primary');
        $('.cantidad_hijos').addClass('hidden');
-       $('.tabla_hijos').addClass('hidden');
+       $('.tabla_hijos').addClass('hidden').find('tbody').empty();
+
    }
 }
 
@@ -118,7 +121,7 @@ function acitvar_btn_tiene_ascendientes(tipo) {
        $('#btn_tiene_ascendientes_si').removeClass('btn-primary').addClass('btn-default');
        $('#btn_tiene_ascendientes_no').removeClass('btn-primary').addClass('btn-primary');
        $('.cantidad_ascendientes').addClass('hidden');
-       $('.tabla_ascencientes').addClass('hidden');
+       $('.tabla_ascencientes').addClass('hidden').find('tbody').empty();
        $('.alerta_info_convivencia').addClass('hidden');
 
    }

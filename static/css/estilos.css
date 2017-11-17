@@ -261,7 +261,7 @@ a:link,a:active{
 
 
 .wizzard ul li.done a .etapa_nombre,.wizzard ul li.done a:before {
-    background:#1ABB9C;
+    background:#1ABB9C !important;
     color:#fff
    }
 

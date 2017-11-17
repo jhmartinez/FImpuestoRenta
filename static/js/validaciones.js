@@ -93,15 +93,18 @@ validar_paso6 = function () {
 validar_fields = function (fields) {
     control=true;
     fields.forEach(function (field) {
-        if(field.val() == "" ){
-            field.parent().addClass('has-error');
+        if(field.val() == "" ||field.val() == 0){
+
             control=false;
+            if(field.prop("tagName")== 'OPTION'){
+                field.parent().parent().addClass('has-error');
+            }
+           else{
+               field.parent().addClass('has-error');
+           }
         }
 
-        if(field.val() == 0){
-            field.parent().addClass('has-error').parent().addClass('has-error');
-            control=false;
-        }
+
     });
     return control;
 };
