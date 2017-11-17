@@ -179,23 +179,23 @@ function construir_tabla_ascendientes() {
 
     for(var i=0; i<= cant_ascendientes-1;i++){
         $('.tabla_ascencientes').find('tbody').append("<tr>\n" +
-             "                           <td><input class=\"form-control\" type=”number” name=annoNac min=\"1900\" max=\"2017\"></td>\n" +
+             "                           <td><div class=\"form-group\"><input class=\"form-control input_tabla1\" type=”number” name=annoNac min=\"1900\" max=\"2017\"></div></td>\n" +
              "                           <td>\n" +
-             "                               <select class=\"form-control\">\n" +
-             "                                   <option>---Seleccione---</option>\n" +
-             "                                   <option>Entre 33% y 64%</option>\n" +
-             "                                   <option>65% o superior</option>\n" +
-             "                               </select>\n" +
+             "                               <div class=\"form-group\"><select class=\"form-control select_tabla1\">\n" +
+             "                                   <option value=\"0\">---Seleccione---</option>\n" +
+             "                                   <option value=\"1\">Entre 33% y 64%</option>\n" +
+             "                                   <option value=\"2\">65% o superior</option>\n" +
+             "                               </select>\n</div>" +
              "                           </td>\n" +
              "                           <td>\n" +
-             "                               <select class=\"form-control\">\n" +
-             "                                   <option>---Seleccione---</option>\n" +
-             "                                   <option>Si</option>\n" +
-             "                                   <option>No</option>\n" +
-             "                               </select>\n" +
+             "                               <div class=\"form-group\"><select class=\"form-control select_tabla1\">\n" +
+             "                                   <option value=\"0\">---Seleccione---</option>\n" +
+             "                                   <option value=\"1\">Si</option>\n" +
+             "                                   <option value=\"2\">No</option>\n" +
+             "                               </select>\n</div>" +
              "                           </td>\n" +
              "                           <td>\n" +
-             "                               <input type=\"number\" class=\"form-control\" id=\"inputcantDescendientes\" max=\"2000\" min=\"1\">\n" +
+             "                               <div class=\"form-group\"><input type=\"number\" class=\"form-control input_tabla1\" id=\"inputcantDescendientes\" max=\"2000\" min=\"1\">\n</div>" +
              "                           </td>\n" +
              "                       </tr>");
     }

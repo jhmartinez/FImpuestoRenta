@@ -55,8 +55,15 @@ validar_paso2 = function () {
 };
 
 validar_paso3 = function () {
-    control=true;
-    return control;
+    fields=[];
+     $('.input_tabla1').each(function () {
+         fields.push($(this));
+     });
+
+     $('.select_tabla1').each(function () {
+         fields.push($(this).find('option:selected'));
+     });
+     return validar_fields(fields);
 };
 
 validar_paso4 = function () {
