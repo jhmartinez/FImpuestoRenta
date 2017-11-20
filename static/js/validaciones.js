@@ -67,25 +67,23 @@ validar_paso3 = function () {
 };
 
 validar_paso4 = function () {
-    fields=[ $('#inputImporte'), $('#inputAnualidades') ];
+    fields=[];
+
+    if($('#tieneAnualidades').prop('checked')){
+        fields.push($('#inputAnualidades') );
+    }
+
+    if($('#tienePensiones').prop('checked')){
+        fields.push($('#inputImporte') );
+    }
+
+
     return validar_fields(fields);
 };
 
 validar_paso5 = function () {
-    control=true;
-    return control;
-
-};
-
-validar_paso6 = function () {
     fields=[ $('#inputFecha_firma') ];
-    control= validar_fields(fields) && $('#btn_firma').hasClass('hidden');
-    if($('#btn_firma').hasClass('hidden')== false){
-        $('#btn_firma').removeClass('btn-success').addClass('btn-danger');
-    }
-    else {
-        $('#btn_firma').removeClass('btn-danger').addClass('btn-success');
-    }
+    control= validar_fields(fields) && !$('.div_firma').hasClass('oculto');
 
     return control;
 };
@@ -94,18 +92,24 @@ validar_fields = function (fields) {
     control=true;
     fields.forEach(function (field) {
         if(field.val() == "" ||field.val() == 0){
-
             control=false;
-            if(field.prop("tagName")== 'OPTION'){
-                field.parent().parent().addClass('has-error');
-            }
-           else{
-               field.parent().addClass('has-error');
-           }
+            change_class_field(field,'has-success','has-error');
         }
-
-
+        else{
+            change_class_field(field,'has-error','has-success');
+        }
     });
     return control;
 };
+
+
+change_class_field=function (field,before,after) {
+        if(field.prop("tagName")== 'OPTION'){
+                field.parent().parent().removeClass(before).addClass(after);
+            }
+        else{
+               field.parent().removeClass(before).addClass(after);
+           }
+};
+
 

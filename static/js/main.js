@@ -8,7 +8,7 @@ function siguiente(){
     if (validar(texto_elemento)){
         $('div.form-group').removeClass('has-error').parent().removeClass('has-error');
          next=texto_elemento;
-         if (texto_elemento < 6 ){
+         if (texto_elemento < 5 ){
              next=texto_elemento+1;
              elemento.removeClass( "active" ).addClass('done').next().addClass('active');
              //cambiar contenido
@@ -16,7 +16,7 @@ function siguiente(){
              $('#etapa_'+texto_elemento).removeClass('in active');
 
          }
-         if (next == 6 ){
+         if (next == 5 ){
              $('#next').addClass('hidden');
              $('#final').removeClass('hidden');
          }
@@ -28,7 +28,7 @@ function siguiente(){
 
 
 function  finalizar() {
-    if (validar(6)){
+    if (validar(5)){
            elemento=$('.wizzard').find('li.active');
            elemento.addClass('done');
            $('div.form-group').removeClass('has-error');
@@ -51,7 +51,7 @@ function anterior(){
          elemento.removeClass( "active" ).addClass('done').prev().addClass('active');
     }
 
-    if (texto_elemento == 6 ){
+    if (texto_elemento == 5 ){
           $('#final').addClass('hidden');
           $('#next').removeClass('hidden');
     }
@@ -73,17 +73,8 @@ function anterior(){
 
 
 function mostar_info_firma( ){
-     $('.alerta_info_firma').removeClass('hidden');
-     $('#btn_firma').addClass('hidden');
-     $('#btn_cfirma').removeClass('hidden');
 
-}
-
-function ocultar_info_firma( ){
-     $('.alerta_info_firma').addClass('hidden');
-     $('#btn_firma').removeClass('hidden');
-     $('#btn_cfirma').addClass('hidden');
-
+      $('.div_firma').removeClass('oculto').slideDown();
 }
 
 
@@ -92,43 +83,84 @@ function ocultar_info_firma( ){
 
 
 
-function acitvar_btn_tiene_hijos(tipo) {
-   if (tipo == 'si') {
-           $('#btn_tiene_hijos_si').removeClass('btn-default').addClass('btn-primary');
-           $('#btn_tiene_hijos_no').removeClass('btn-primary').addClass('btn-default');
-           $('.cantidad_hijos').removeClass('hidden');
-            $('.tabla_hijos').removeClass('hidden');
-   }
-   else{
-       $('#btn_tiene_hijos_si').removeClass('btn-primary').addClass('btn-default');
-       $('#btn_tiene_hijos_no').removeClass('btn-primary').addClass('btn-primary');
-       $('.cantidad_hijos').addClass('hidden');
-       $('.tabla_hijos').addClass('hidden').find('tbody').empty();
+function change_tiene_hijos() {
+    $('#tiene_hijos').change(function() {
+        if($(this).prop('checked')){
+          $('.cantidad_hijos').removeClass('hidden');
 
-   }
+        }
+        else{
+           $('.cantidad_hijos').addClass('hidden');
+           $('.tabla_hijos').addClass('hidden').find('tbody').empty();
+        }
+    });
+}
+
+function change_tiene_ascendientes() {
+
+    $('#tiene_ascendientes').change(function() {
+        if($(this).prop('checked')){
+          $('.cantidad_ascendientes').removeClass('hidden');
+
+        }
+        else{
+           $('.cantidad_ascendientes').addClass('hidden');
+           $('.tabla_ascencientes').addClass('hidden').find('tbody').empty();
+        }
+    });
 }
 
 
+function change_tiene_pensiones() {
+       $('#tienePensiones').change(function() {
+        if($(this).prop('checked')){
+          $('.cuantia_pension').slideDown();
 
-function acitvar_btn_tiene_ascendientes(tipo) {
-   if (tipo == 'si') {
-           $('#btn_tiene_ascendientes_si').removeClass('btn-default').addClass('btn-primary');
-           $('#btn_tiene_ascendientes_no').removeClass('btn-primary').addClass('btn-default');
-           $('.cantidad_ascendientes').removeClass('hidden');
-            $('.tabla_ascencientes').removeClass('hidden');
-   }
-   else{
-       $('#btn_tiene_ascendientes_si').removeClass('btn-primary').addClass('btn-default');
-       $('#btn_tiene_ascendientes_no').removeClass('btn-primary').addClass('btn-primary');
-       $('.cantidad_ascendientes').addClass('hidden');
-       $('.tabla_ascencientes').addClass('hidden').find('tbody').empty();
-       $('.alerta_info_convivencia').addClass('hidden');
+        }
+        else{
+           $('.cuantia_pension').slideUp();
 
-   }
+        }
+    });
 }
+
+function change_tiene_anualidades() {
+     $('#tieneAnualidades').change(function() {
+        if($(this).prop('checked')){
+          $('.cuantia_anualidades').slideDown();
+
+        }
+        else{
+           $('.cuantia_anualidades').slideUp();
+
+        }
+    });
+
+
+    $('#tieneAnualidades').change(function() {
+        if($(this).prop('checked')){
+          $('.cantidad_hijos').removeClass('hidden');
+
+        }
+        else{
+           $('.cantidad_hijos').addClass('hidden');
+           $('.tabla_hijos').addClass('hidden').find('tbody').empty();
+        }
+    });
+
+}
+
+function configurar_toggle() {
+   $('#tienePensiones, #tieneAnualidades, #tiene_hijos, #tiene_ascendientes').bootstrapToggle({
+        off: 'No',
+        on: 'Sí'
+    });
+
+   $('#tienePensiones, #tieneAnualidades, #tiene_hijos, #tiene_ascendientes').bootstrapToggle('off');
+}
+
 
 function construir_tabla_hijos() {
-
     cant_hijos=parseInt($('#input_cantidad_hijos').val());
     if (cant_hijos > 0){
         $('.tabla_hijos').find('tbody').empty();
@@ -170,8 +202,6 @@ function construir_tabla_hijos() {
 }
 
 
-
-
 function construir_tabla_ascendientes() {
      cant_ascendientes=parseInt($('#input_cantidad_ascendientes').val());
     if (cant_ascendientes > 0){
@@ -209,8 +239,37 @@ function construir_tabla_ascendientes() {
 
 
 }
+
+
+
+
+
+
+
+function slide_necesidad(accion) {
+    accion == 'si' ? $('.dicapacidad_necesidad_check').slideDown() : $('.dicapacidad_necesidad_check').slideUp();
+}
+
+
+
+function configuraciones() {
+     configurar_toggle();
+     $('input:radio, input:checkbox').iCheck({
+         checkboxClass: 'icheckbox_flat-green',
+         radioClass: 'iradio_flat-green'
+    });
+}
+
 $(document).ready(function() {
 
+    //Configuraciones plugins-------------------------------------------------------------------------------------------
+        configuraciones();
+        change_tiene_ascendientes();
+        change_tiene_hijos();
+        change_tiene_pensiones();
+        change_tiene_anualidades();
+
+    //------------------------------------------------------------------------------------------------------------------
 
     //Activar mensajes cuando se desencadena el evento hover en los botones de ayuda
 

@@ -13,6 +13,11 @@ h1, h2, h3, h4,hr{
     color: #73879C !important;
 }
 
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+}
 
 .botones_acciones{
     margin: 30px;
@@ -132,6 +137,12 @@ table .form-group{
 .alerta_info_adquisicion{
     position: absolute;
     z-index: 6;
+    top: -8px;
+    width: 80%;
+}
+
+.alerta_info_adquisicion:hover{
+    cursor: pointer !important;
 }
 
 
@@ -192,6 +203,7 @@ a:link,a:active{
     display: table-cell;
     text-align: center;
     padding: 0!important;
+    width: 20% !important;
 
 }
 
@@ -290,6 +302,24 @@ a:link,a:active{
     line-height: 1.20;
 }
 
+
+.info_movilidad_geografica{
+    position: absolute;
+    left: 99%;
+    top: 6px;
+}
+
+.obtencion_rendimientos_div{
+    margin-left: -20px !important;
+    width: 86% !important;
+    text-align: justify;
+}
+
+.info_rendimiento{
+    margin-top: 6px !important;
+}
+
+
 .sms_info2{
     border: 2px solid white;
     color: white!important;
@@ -300,8 +330,21 @@ a:link,a:active{
     text-align: center;
     border: 2px solid #18a98c;
     color: #19ba9a !important;
+    cursor: pointer;
 }
 
+
+.seccion_pagos{
+    position: relative;
+    top: 50px !important;
+}
+
+.div_firma{
+    position: relative;
+    right: 62%;
+    top:30px;
+    color:#26B99A;
+}
 
 
 .alert-info{
@@ -311,6 +354,7 @@ a:link,a:active{
     background-color: #34495E !important;
     color: white !important;
     text-align: justify;
+    z-index: 600 !important;
 }
 
 .alerta_info_firma{
@@ -320,7 +364,12 @@ a:link,a:active{
     margin-left: 20px;
     display: inline-block;
 
-
-
-
 }
+
+
+table{
+    border-collapse: separate;!important;
+    border-spacing: 5px !important;
+}
+
+
