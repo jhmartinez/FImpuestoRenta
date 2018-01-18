@@ -1,3 +1,3 @@
 # demo_iu
-Demo de formulario utilizando bootstrap, css3, html5 y jquery
+Demo de Formulario utilizando tecnologías web como Bootstrap, CSS3, HTML5 y jQuery
 
